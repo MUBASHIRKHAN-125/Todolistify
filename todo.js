@@ -17,29 +17,35 @@ button.addEventListener("click", () => {
 
     let span = document.createElement("span");
     span.innerText = inputText;
-
+    span.classList.add("span");
 
     let buttonDelete = document.createElement("button");
-    buttonDelete.innerText = "Delete";
+    buttonDelete.innerHTML = "<i class='fa-solid fa-trash'></i>";
     buttonDelete.addEventListener("click", () => {
         li.remove();
     });
     buttonDelete.classList.add("deletebut");
 
     let buttonEdit = document.createElement("button");
-    buttonEdit.innerText = "Edit";
-    // buttonEdit.addEventListener("click", () => {
-    //     li.remove();
-    // });
-    buttonEdit.classList.add("editbutton");
+    buttonEdit.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
+    buttonEdit.addEventListener("click", () => {
+        let currentText = span.innerText;
+        let updateText = prompt("Edit your task:" , currentText)?.trim();
+    if(updateText !== null){
+        span.innerText = updateText;
+    }
+});
+buttonEdit.classList.add("editbutton");
 
-    let grpButton = document.createElement("div");
-    grpButton.append(buttonEdit , buttonDelete)
-    li.append(span , grpButton);
-    ul.append(li);
+let grpButton = document.createElement("div");
+grpButton.append(buttonEdit, buttonDelete)
+li.append(span, grpButton);
+ul.append(li);
+
+userinput.value = "";
 });
 
-refresh.addEventListener('click' , () => {
+refresh.addEventListener('click', () => {
     userinput.value = "";
     ul.innerText = "";
 });
