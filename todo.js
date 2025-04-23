@@ -1,10 +1,11 @@
-const userinput = document.querySelector('#userlisttodo');
-const button = document.querySelector("button");
+const userInput = document.querySelector('#userlisttodo');
+const button = document.querySelector("#addbtn");
 const ul = document.querySelector("ul");
-const refresh = document.querySelector('#refresh');
+const refresh = document.querySelector('#refreshinput');
+const search = document.querySelector('#searchinput');
 
 button.addEventListener("click", () => {
-    let inputText = userinput.value.trim();
+    let inputText = userInput.value.trim();
 
 
     if (inputText === "") {
@@ -26,27 +27,38 @@ button.addEventListener("click", () => {
     });
     buttonDelete.classList.add("deletebut");
 
-    let buttonEdit = document.createElement("button");
-    buttonEdit.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
-    buttonEdit.addEventListener("click", () => {
-        let currentText = span.innerText;
-        let updateText = prompt("Edit your task:" , currentText)?.trim();
-    if(updateText !== null){
-        span.innerText = updateText;
-    }
-});
-buttonEdit.classList.add("editbutton");
+        let buttonEdit = document.createElement("button");
+        buttonEdit.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
+        buttonEdit.addEventListener("click", () => {
+            let currentText = span.innerText;
+            let updateText = prompt("Edit your task:" , currentText);
+        if(updateText !== null && updateText.trim() !== "" ){
+            span.innerText = updateText;
+        }
+    });
+    buttonEdit.classList.add("editbutton");
 
 let grpButton = document.createElement("div");
 grpButton.append(buttonEdit, buttonDelete)
 li.append(span, grpButton);
 ul.append(li);
 
-userinput.value = "";
+userInput.value = "";
+
+});
+
+search.addEventListener('input' , () => {
+    const matchInput =  search.value.toLowerCase().trim(); 
+    const ulListItem = document.querySelectorAll('li');
+    ulListItem.forEach(ser => {
+    const userListItem  =  ser.textContent.toLocaleLowerCase().trim();
+    ser.style.display = userListItem.includes(matchInput) ? "flex" : "none";
+});
 });
 
 refresh.addEventListener('click', () => {
-    userinput.value = "";
+    userInput.value = "";
+    search.value ="";
     ul.innerText = "";
 });
 

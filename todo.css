@@ -31,11 +31,11 @@ body {
 }
 
 .Todocontainer>h1 {
-    padding-top: 20px;
+    padding: 20px 0px 14px 0px ;
     font-family: "Poppins", sans-serif;
 }
 
-.todoinput {
+.todoinput ,.searchinput {
     display: flex;
     justify-content: space-around;
     background-color: #FFFFFF;
@@ -44,26 +44,33 @@ body {
     border-radius: 22px;
 }
 
-.todoinput>input {
+.todoinput>input  , .searchinput>input{
     outline: none;
     border: none;
     color: #4e5357;
     font-size: 1.03rem;
 }
 
-.todoinput>input::placeholder {
+.todoinput>input::placeholder , .searchinput>input::placeholder {
     color: #97999b;
 }
 
-.butinput>button {
+.butinput>button{
     background-color: #517fff;
     color: white;
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 10px 22px;
     border: none;
     cursor: pointer;
 }
-
+.refreshinput>button{
+    background-color: #517fff;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+}
 .ulTodoList>div {
     display: flex;
     column-gap: 6px;
@@ -105,4 +112,32 @@ body {
 }
 span{
     padding: 0px 30px;
+}
+@media (max-width: 425px) {
+    .Todocontainer {
+        padding: 15px 12px;
+    }
+    .todoinput, .searchinput {
+        width: 355px;
+    }
+}
+@media (max-width: 375px) {
+    .Todocontainer {
+        padding: 15px 9px;
+    }
+    .todoinput, .searchinput {
+        width: 336px;
+    }
+}
+@media (max-width: 320px) {
+    .Todocontainer {
+        padding: 15px 5px;
+    }
+    .todoinput, .searchinput {
+        width: 290px;
+        overflow: hidden;
+    }
+    .ulTodoList {
+        min-width: 290px;
+    }
 }
