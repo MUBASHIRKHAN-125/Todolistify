@@ -81,7 +81,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: #FFFFFF;
-    min-width: 340px;
+    min-width: 370px;
     padding: 8px 10px;
     border-radius: 18px;
     font-size: 18px;
@@ -123,21 +123,36 @@ span{
 }
 @media (max-width: 375px) {
     .Todocontainer {
-        padding: 15px 9px;
+        padding: 15px 5px;
     }
     .todoinput, .searchinput {
-        width: 336px;
+        width: 350px;
+        overflow: hidden;
+    }
+    span {
+        padding: 0px 8px;
+    }
+    .ulTodoList {
+        min-width: 328px;
+     }
+}
+@media (max-width: 390px) {
+    .ulTodoList {
+        min-width: 335px;
+    }
+    span{
+        padding: 0px 14px;
     }
 }
 @media (max-width: 320px) {
     .Todocontainer {
-        padding: 15px 5px;
+        padding: 15px 4px;
     }
     .todoinput, .searchinput {
-        width: 290px;
+        width: 300px;
         overflow: hidden;
     }
     .ulTodoList {
-        min-width: 290px;
+        min-width: 296px;
     }
 }
