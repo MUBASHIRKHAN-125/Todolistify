@@ -27,38 +27,47 @@ button.addEventListener("click", () => {
     });
     buttonDelete.classList.add("deletebut");
 
-        let buttonEdit = document.createElement("button");
+    let buttonEdit = document.createElement("button");
+    buttonEdit.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
+    buttonEdit.addEventListener("click", () => {
+    if (buttonEdit.textContent === "Save") {
+        const inputList = li.querySelector('input');
+        span.innerText = inputList.value;
+        li.replaceChild(span , inputList);
         buttonEdit.innerHTML = "<i class='fa-solid fa-pen-to-square'></i>";
-        buttonEdit.addEventListener("click", () => {
-            let currentText = span.innerText;
-            let updateText = prompt("Edit your task:" , currentText);
-        if(updateText !== null && updateText.trim() !== "" ){
-            span.innerText = updateText;
-        }
+    } else {
+        const input = document.createElement("input");
+        input.classList.add('input');
+        input.type = "text";
+        input.value = span.innerText;
+        li.replaceChild(input, span);
+        buttonEdit.textContent = "Save";
+        buttonEdit.style.fontWeight = 'bold';
+    }
     });
     buttonEdit.classList.add("editbutton");
 
-let grpButton = document.createElement("div");
-grpButton.append(buttonEdit, buttonDelete)
-li.append(span, grpButton);
-ul.append(li);
+    let grpButton = document.createElement("div");
+    grpButton.append(buttonEdit, buttonDelete)
+    li.append(span, grpButton);
+    ul.append(li);
 
-userInput.value = "";
+    userInput.value = "";
 
 });
 
-search.addEventListener('input' , () => {
-    const matchInput =  search.value.toLowerCase().trim(); 
+search.addEventListener('input', () => {
+    const matchInput = search.value.toLowerCase().trim();
     const ulListItem = document.querySelectorAll('li');
     ulListItem.forEach(ser => {
-    const userListItem  =  ser.textContent.toLocaleLowerCase().trim();
-    ser.style.display = userListItem.includes(matchInput) ? "flex" : "none";
-});
+        const userListItem = ser.textContent.toLocaleLowerCase().trim();
+        ser.style.display = userListItem.includes(matchInput) ? "flex" : "none";
+    });
 });
 
 refresh.addEventListener('click', () => {
     userInput.value = "";
-    search.value ="";
+    search.value = "";
     ul.innerText = "";
 });
 

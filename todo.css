@@ -113,6 +113,12 @@ body {
 span{
     padding: 0px 30px;
 }
+input{
+    border: none;
+    outline: none;
+    font-size: 1.03rem;
+    padding: 0px 16px; 
+}
 @media (max-width: 425px) {
     .Todocontainer {
         padding: 15px 12px;
